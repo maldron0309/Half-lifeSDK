@@ -136,6 +136,8 @@ void CZombie::SetYawSpeed()
 
 bool CZombie::TakeDamage(entvars_t* pevInflictor, entvars_t* pevAttacker, float flDamage, int bitsDamageType)
 {
+	ALERT(at_console, "Ouch!\n");
+
 	// Take 30% damage from bullets
 	if (bitsDamageType == DMG_BULLET)
 	{
@@ -284,6 +286,8 @@ void CZombie::Spawn()
 	m_flFieldOfView = 0.5;	  // indicates the width of this monster's forward view cone ( as a dotproduct result )
 	m_MonsterState = MONSTERSTATE_NONE;
 	m_afCapability = bits_CAP_DOORS_GROUP;
+
+	pev->effects |= EF_DIMLIGHT;
 
 	MonsterInit();
 }
